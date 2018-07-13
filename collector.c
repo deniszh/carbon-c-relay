@@ -127,7 +127,10 @@ collector_runner(void *s)
 			/* prepare hostname for graphite metrics */
 			snprintf(metric, sizeof(metric), "%scarbon.relays.%s",
 					stub == NULL ? "" : stub, relay_hostname);
-			for (m = metric + strlen("carbon.relays."); *m != '\0'; m++)
+			size_t stub_len = 0;
+            if (stub != NULL)
+                stub_len = strlen(stub);
+            for (m = metric + stub_len + strlen("carbon.relays."); *m != '\0'; m++)
 				if (*m == '.')
 					*m = '_';
 			*m++ = '.';
