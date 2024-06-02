@@ -24,7 +24,7 @@
 #include "server.h"
 #include "aggregator.h"
 
-#define CONN_DESTS_SIZE    64
+#define CONN_DESTS_SIZE    128
 typedef struct {
 	const char *metric;
 	server *dest;
@@ -32,7 +32,7 @@ typedef struct {
 
 typedef struct _router router;
 
-#define RE_MAX_MATCHES     64
+#define RE_MAX_MATCHES     128
 
 router *router_readconfig(const char *path, size_t queuesize, size_t batchsize, unsigned short iotimeout);
 void router_optimise(router *r);
